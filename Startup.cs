@@ -14,6 +14,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using MediatR;
 using Zedcrest.DocumentManager.Infrastructure.Persistence;
+using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace Zedcrest.DocumentManager
 {
@@ -35,6 +37,10 @@ namespace Zedcrest.DocumentManager
                  options.UseSqlServer(Configuration["DB_CONNECTION_STRING"]));
 
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+            });
 
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -44,6 +50,9 @@ namespace Zedcrest.DocumentManager
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

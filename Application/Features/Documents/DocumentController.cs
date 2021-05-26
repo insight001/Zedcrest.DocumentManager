@@ -40,11 +40,16 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents
 
 
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromRoute]GetUserByReferenceRequestModel model)
+        [HttpGet(template:"{reference}")]
+        public async Task<IActionResult> Get([FromRoute]string reference)
         {
             try
             {
+                var model = new GetUserByReferenceRequestModel
+                {
+                    Reference = reference
+                };
+
                 var response = await _mediator.Send(model);
 
                 return StatusCode(201,response);
