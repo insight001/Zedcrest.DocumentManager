@@ -9,7 +9,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Utilities
     {
         public static string Generate()
         {
-            return Guid.NewGuid().ToString().Remove('-').ToUpper(); 
+            return Guid.NewGuid().ToString().Replace("-", "").ToUpper(); 
         }
     }
 }
