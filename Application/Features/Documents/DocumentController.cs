@@ -41,7 +41,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents
 
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromBody]GetUserByReferenceRequestModel model)
+        public async Task<IActionResult> Get([FromRoute]GetUserByReferenceRequestModel model)
         {
             try
             {
