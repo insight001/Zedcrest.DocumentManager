@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zedcrest.DocumentManager.Domain.Models.ResponseModels;
 using Zedcrest.DocumentManager.Domain.Models.ResponseModels.CommandResponseModels;
 
 namespace Zedcrest.DocumentManager.Domain.Models.RequestModels.CommandRequestModels
 {
-    public class UploadUserRequestModel : IRequest<UploadUserResponseModel>
+    public class UploadUserRequestModel : IRequest<APIResponse<UploadUserResponseModel>>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
