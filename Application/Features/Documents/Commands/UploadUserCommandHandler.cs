@@ -11,15 +11,24 @@ using Zedcrest.DocumentManager.Infrastructure.Persistence;
 using Zedcrest.DocumentManager.Domain.Entities;
 using Zedcrest.DocumentManager.Domain.Models.ResponseModels;
 using Zedcrest.DocumentManager.Domain.Constants;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Interface;
+using Microsoft.Extensions.Configuration;
+using AutoMapper;
 
 namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 {
     public class UploadUserCommandHandler : IRequestHandler<UploadUserRequestModel,APIResponse<UploadUserResponseModel>>
     {
         private readonly AppDbContext _context;
-        public UploadUserCommandHandler(AppDbContext context)
+        private readonly IFileOperation _fileOperation;
+        private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
+        public UploadUserCommandHandler(AppDbContext context, IFileOperation fileOperation, IConfiguration configuration, IMapper mapper)
         {
             _context = context;
+            _configuration = configuration;
+            _fileOperation = fileOperation;
+            _mapper = mapper;
         }
         public async Task<APIResponse<UploadUserResponseModel>> Handle(UploadUserRequestModel request, CancellationToken cancellationToken)
         {
@@ -36,10 +45,16 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 
             _context.Users.Add(user);
 
-            //Call upload file service ; returns file meta data
+            var response = await _fileOperation.UploadFiles(request.Files, _configuration);
 
+            var documents = _mapper.Map<List<Document>>(response);
 
+            documents.ForEach(x =>
+            x.UserId = user.UserId
+            );
 
+            _context.AddRange(documents);
+          
             _context.SaveChanges();
 
             return new APIResponse<UploadUserResponseModel>
