@@ -10,5 +10,6 @@ namespace Zedcrest.DocumentManager.Domain.Models.DTO
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Refrence { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Zedcrest.DocumentManager.Domain.Models.ResponseModels.CommandResponseModels
 {
-    public class UploadUserReferenceModel
+    public class UploadUserResponseModel
     {
         public string Reference { get; set; }
     }
