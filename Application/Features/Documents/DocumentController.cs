@@ -34,7 +34,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new APIResponse<string> { Message = "", Success = false, Data =ex.Message });
+                return StatusCode(500, new APIResponse<string> { Message =ResponseMessages.InternalError, Success = false, Data =ex.Message });
             }
         }
 
@@ -51,7 +51,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new APIResponse<string> { Message = "", Success = false, Data = ex.Message });
+                return StatusCode(500, new APIResponse<string> { Message = ResponseMessages.InternalError, Success = false, Data = ex.Message });
             }
         }
     }
