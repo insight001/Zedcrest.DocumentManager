@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using MediatR;
 using Zedcrest.DocumentManager.Infrastructure.Persistence;
 
 namespace Zedcrest.DocumentManager
@@ -34,8 +36,8 @@ namespace Zedcrest.DocumentManager
 
 
 
-
-
+            services.AddAutoMapper(typeof(Startup));
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<DbContext, AppDbContext>();
         }
 
