@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace Zedcrest.DocumentManager.Domain.Models.ResponseModels
 {
-    public class HandlerResponse<T>
+    public class APIResponse<T>
     {
         public bool Success { get; set; }
-        public bool Message { get; set; }
+        public string Message { get; set; }
         public T Data { get; set; }
     }
+
 }

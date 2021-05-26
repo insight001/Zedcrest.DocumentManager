@@ -9,17 +9,19 @@ using Zedcrest.DocumentManager.Domain.Models.RequestModels.CommandRequestModels;
 using Zedcrest.DocumentManager.Domain.Models.ResponseModels.CommandResponseModels;
 using Zedcrest.DocumentManager.Infrastructure.Persistence;
 using Zedcrest.DocumentManager.Domain.Entities;
+using Zedcrest.DocumentManager.Domain.Models.ResponseModels;
+using Zedcrest.DocumentManager.Domain.Constants;
 
 namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 {
-    public class UploadUserCommandHandler : IRequestHandler<UploadUserRequestModel, UploadUserResponseModel>
+    public class UploadUserCommandHandler : IRequestHandler<UploadUserRequestModel,APIResponse<UploadUserResponseModel>>
     {
         private readonly AppDbContext _context;
         public UploadUserCommandHandler(AppDbContext context)
         {
             _context = context;
         }
-        public async Task<UploadUserResponseModel> Handle(UploadUserRequestModel request, CancellationToken cancellationToken)
+        public async Task<APIResponse<UploadUserResponseModel>> Handle(UploadUserRequestModel request, CancellationToken cancellationToken)
         {
             string reference = ReferenceGenerator.Generate();
 
@@ -39,9 +41,11 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 
             _context.SaveChanges();
 
-            return new UploadUserResponseModel
+            return new APIResponse<UploadUserResponseModel>
             {
-                Reference = user.Refrence
+                Success =  true,
+                Message = ResponseMessages.ItemCreatedSuccessfully,
+                 Data =  new UploadUserResponseModel { Reference = user.Refrence}
             };
         }
     }

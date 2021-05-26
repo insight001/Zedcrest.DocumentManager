@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Application\Controllers\" />
-    <Folder Include="Domain\Models\RequestModels\QueryRequestModels\" />
     <Folder Include="Infrastructure\Providers\" />
   </ItemGroup>
 
