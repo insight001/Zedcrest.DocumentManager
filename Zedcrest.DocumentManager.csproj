@@ -7,12 +7,12 @@
 
   <ItemGroup>
     <Folder Include="Application\Controllers\" />
-    <Folder Include="Infrastructure\Providers\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.8.4" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
@@ -25,6 +25,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="SendGrid" Version="9.23.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.1.4" />
