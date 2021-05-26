@@ -10,12 +10,14 @@ using Zedcrest.DocumentManager.Domain.Constants;
 using Zedcrest.DocumentManager.Domain.Exceptions;
 using Zedcrest.DocumentManager.Domain.Models.DTO;
 using Zedcrest.DocumentManager.Domain.Models.RequestModels.CommandRequestModels;
+using Zedcrest.DocumentManager.Domain.Models.RequestModels.QueryRequestModels;
+using Zedcrest.DocumentManager.Domain.Models.ResponseModels;
 using Zedcrest.DocumentManager.Domain.Models.ResponseModels.QueryResponseModels;
 using Zedcrest.DocumentManager.Infrastructure.Persistence;
 
 namespace Zedcrest.DocumentManager.Application.Features.Documents.Queries
 {
-    public class GetUserByReferenceQueryHandler : IRequestHandler<GetUserByReferenceRequestModel, GetUserByReferenceResponseModel>
+    public class GetUserByReferenceQueryHandler : IRequestHandler<GetUserByReferenceRequestModel, APIResponse<GetUserByReferenceResponseModel>>
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
@@ -26,7 +28,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Queries
             _mapper = mapper;
         }
 
-        public async Task<GetUserByReferenceResponseModel> Handle(GetUserByReferenceRequestModel request, CancellationToken cancellationToken)
+        public async Task<APIResponse<GetUserByReferenceResponseModel>> Handle(GetUserByReferenceRequestModel request, CancellationToken cancellationToken)
         {
             var user = _context.Users.Where(x => x.Refrence == request.Reference).Include(x=>x.Documents).FirstOrDefault();
 
@@ -34,11 +36,19 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Queries
                 throw new RestException(System.Net.HttpStatusCode.NotFound, ResponseMessages.ReferenceNotFound);
 
 
-            return new GetUserByReferenceResponseModel
+            var response = new GetUserByReferenceResponseModel
             {
                 Documents = _mapper.Map<List<DocumentDTO>>(user.Documents),
                 Profile = _mapper.Map<UserDTO>(user)
             };
+
+            return new APIResponse<GetUserByReferenceResponseModel>
+            {
+                Data = response,
+                Message = ResponseMessages.ItemRetrieved,
+                Success = true
+            };
+            
         }
     }
 }
