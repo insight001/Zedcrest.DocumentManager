@@ -30,7 +30,8 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserId = Guid.NewGuid(),
-                Refrence = reference
+                Refrence = reference,
+                Email =  request.Email
             };
 
             _context.Users.Add(user);
