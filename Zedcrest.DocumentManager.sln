@@ -7,7 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zedcrest.DocumentManager", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{07D2A8F9-EFD5-4749-AFD6-617F3BC45D59}"
 EndProject
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zedcrest.DocumentManager.UnitTests", "Zedcrest.DocumentManager.UnitTests\Zedcrest.DocumentManager.UnitTests.csproj", "{077378BE-5E08-4646-B2C0-B4A6E5FF493B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,16 +19,16 @@ Global
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48C280EE-19D4-4B84-8D27-A1AC62CACA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48C280EE-19D4-4B84-8D27-A1AC62CACA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48C280EE-19D4-4B84-8D27-A1AC62CACA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48C280EE-19D4-4B84-8D27-A1AC62CACA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077378BE-5E08-4646-B2C0-B4A6E5FF493B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077378BE-5E08-4646-B2C0-B4A6E5FF493B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077378BE-5E08-4646-B2C0-B4A6E5FF493B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077378BE-5E08-4646-B2C0-B4A6E5FF493B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{48C280EE-19D4-4B84-8D27-A1AC62CACA6C} = {07D2A8F9-EFD5-4749-AFD6-617F3BC45D59}
+		{077378BE-5E08-4646-B2C0-B4A6E5FF493B} = {07D2A8F9-EFD5-4749-AFD6-617F3BC45D59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E341118-C7AD-4237-A896-4FD5194DF696}
