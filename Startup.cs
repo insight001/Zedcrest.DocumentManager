@@ -19,6 +19,7 @@ using System.IO;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Interface;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Services;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Services.HostedService;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Services.Operations;
 
 namespace Zedcrest.DocumentManager
 {
@@ -50,6 +51,8 @@ namespace Zedcrest.DocumentManager
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<DbContext, AppDbContext>();
             services.AddScoped<IFileOperation, FileOperation>();
+            services.AddScoped<IEmailOperation, SendGridOperation>();
+            services.AddScoped<IEmailOperation, MailGunOperation>();
             services.AddTransient<SendEmailConsumer>();
         }
 

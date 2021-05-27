@@ -5,6 +5,18 @@
     <UserSecretsId>7209649f-36d8-485f-9faa-8a6ffcd0c1cb</UserSecretsId>
   </PropertyGroup>
 
+<ItemGroup>
+     <Content Include="Zedcrest.DocumentManager.UnitTest\**"> <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	 </Content> 
+</ItemGroup>
+
+<ItemGroup>
+  <Compile Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <Content Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <EmbeddedResource Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <None Remove="Zedcrest.DocumentManager.UnitTests\**" />
+</ItemGroup>
+
   <ItemGroup>
     <Folder Include="Application\Controllers\" />
   </ItemGroup>
