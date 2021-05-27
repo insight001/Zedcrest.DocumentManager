@@ -50,6 +50,7 @@ namespace Zedcrest.DocumentManager
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<DbContext, AppDbContext>();
             services.AddScoped<IFileOperation, FileOperation>();
+            services.AddTransient<SendEmailConsumer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
