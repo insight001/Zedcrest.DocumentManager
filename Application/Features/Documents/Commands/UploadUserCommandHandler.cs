@@ -47,7 +47,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
                 LastName = request.LastName,
                 UserId = Guid.NewGuid(),
                 Refrence = reference,
-                Email =  request.Email
+                Email =  request.Email 
             };
 
             _context.Users.Add(user);
