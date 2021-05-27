@@ -16,6 +16,9 @@ using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using MassTransit;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Services.HostedService;
+using System.IO;
+using Zedcrest.DocumentManager.Domain.Exceptions;
+using Microsoft.AspNetCore.Http;
 
 namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 {
@@ -52,11 +55,15 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 
             _context.Users.Add(user);
 
+
+            bool validator = Validator(request.Files);
+         
+
             var response = await _fileOperation.UploadFiles(request.Files, _configuration);
 
             var documents = _mapper.Map<List<Document>>(response);
 
-            documents.ForEach(x =>
+            documents?.ForEach(x =>
             x.UserId = user.UserId
             );
 
@@ -82,6 +89,23 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
                 Message = ResponseMessages.ItemCreatedSuccessfully,
                  Data =  new UploadUserResponseModel { Reference = user.Refrence}
             };
+        }
+
+
+        private bool Validator(List<IFormFile> files)
+        {
+            var extensions = new List<string>() { ".pdf", ".xls", ".xlsx", ".doc", ".docx", ".csv", ".png", ".jpg", ".jpeg", ".gif", ".txt" };
+
+            foreach (var file in files)
+            {
+                if (!extensions.Contains(Path.GetExtension(file.FileName).ToLower()))
+                    throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} extension not recognized");
+
+                if (file.Length > 2000000)
+                    throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} is greater than 2MB");
+            }
+
+            return true;
         }
     }
 }
