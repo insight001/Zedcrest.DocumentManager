@@ -9,12 +9,13 @@
      <Content Include="Zedcrest.DocumentManager.UnitTest\**"> <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	 </Content> 
 </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Zedcrest.DocumentManager.UnitTest\**" />
-    <Content Remove="Zedcrest.DocumentManager.UnitTest\**" />
-    <EmbeddedResource Remove="Zedcrest.DocumentManager.UnitTest\**" />
-    <None Remove="Zedcrest.DocumentManager.UnitTest\**" />
-  </ItemGroup>
+
+<ItemGroup>
+  <Compile Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <Content Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <EmbeddedResource Remove="Zedcrest.DocumentManager.UnitTests\**" />
+  <None Remove="Zedcrest.DocumentManager.UnitTests\**" />
+</ItemGroup>
 
   <ItemGroup>
     <Folder Include="Application\Controllers\" />
