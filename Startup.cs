@@ -18,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using System.IO;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Interface;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Services;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Services.HostedService;
 
 namespace Zedcrest.DocumentManager
 {
@@ -38,6 +39,7 @@ namespace Zedcrest.DocumentManager
             services.AddDbContext<AppDbContext>(options =>
                  options.UseSqlServer(Configuration["DB_CONNECTION_STRING"]));
 
+            services.RegisterQueueServices(Configuration);
 
             services.AddSwaggerGen(c =>
             {

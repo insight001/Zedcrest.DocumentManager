@@ -8,6 +8,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Interface
 {
     public interface IEmailOperation
     {
+        string CurrentName { get; }
         void SendEmailWithAttachments(string receiverEmail, string name, List<IFormFile> attacments);
     }
 }

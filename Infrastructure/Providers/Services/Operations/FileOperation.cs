@@ -37,7 +37,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
                 var document = new DocumentDTO
                 {
                     DocumentTitle = contentFileName,
-                    DocumentURL = blobClient.Uri.ToString(),
+                    DocumentURL = blobClient.Uri.AbsoluteUri,
                     FilSizeInByte = file.Length
                 };
 
@@ -57,7 +57,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
                 if (!extensions.Contains(Path.GetExtension(file.FileName)))
                     throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} extension not recognized");
 
-                if (file.Length > 200000)
+                if (file.Length > 2000000)
                     throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} is greater than 2MB");
             }
 

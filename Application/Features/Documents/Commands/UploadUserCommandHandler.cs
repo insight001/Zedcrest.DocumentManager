@@ -14,6 +14,8 @@ using Zedcrest.DocumentManager.Domain.Constants;
 using Zedcrest.DocumentManager.Infrastructure.Providers.Interface;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
+using MassTransit;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Services.HostedService;
 
 namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
 {
@@ -23,13 +25,18 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
         private readonly IFileOperation _fileOperation;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
-        public UploadUserCommandHandler(AppDbContext context, IFileOperation fileOperation, IConfiguration configuration, IMapper mapper)
+        private readonly IPublishEndpoint _endpoint;
+
+
+        public UploadUserCommandHandler(AppDbContext context, IFileOperation fileOperation, IConfiguration configuration, IMapper mapper, IPublishEndpoint endpoint)
         {
             _context = context;
             _configuration = configuration;
             _fileOperation = fileOperation;
             _mapper = mapper;
+            _endpoint = endpoint;
         }
+
         public async Task<APIResponse<UploadUserResponseModel>> Handle(UploadUserRequestModel request, CancellationToken cancellationToken)
         {
             string reference = ReferenceGenerator.Generate();
@@ -54,6 +61,18 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
             );
 
             _context.AddRange(documents);
+
+            await _endpoint.Publish<ISendEmailMessage>(new SendEmailMessage()
+            {
+                DateCreated = DateTime.UtcNow,
+                Email = new Domain.Models.DTO.EmailDTO
+                {
+                    Attachments = request.Files,
+                    Name = $"{user.FirstName} {user.LastName}",
+                    ReceiverEmail = user.Email
+                }
+
+            });
           
             _context.SaveChanges();
 
