@@ -13,8 +13,10 @@ namespace Zedcrest.DocumentManager.Infrastructure.Persistence
         {
 
         }
+        public AppDbContext() { 
+        }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Document> Documents { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual  DbSet<Document> Documents { get; set; }
     }
 }

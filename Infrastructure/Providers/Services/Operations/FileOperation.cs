@@ -50,7 +50,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
         }
 
 
-        private bool ValidateSize(List<IFormFile> files)
+        public bool ValidateSize(List<IFormFile> files)
         {
             var extensions = new List<string>() { ".pdf", ".xls", ".xlsx", ".doc", ".docx", ".csv", ".png", ".jpg", ".jpeg", ".gif", ".txt" };
             
