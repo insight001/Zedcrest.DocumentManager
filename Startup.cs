@@ -16,6 +16,9 @@ using MediatR;
 using Zedcrest.DocumentManager.Infrastructure.Persistence;
 using Microsoft.OpenApi.Models;
 using System.IO;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Interface;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Services;
+using Zedcrest.DocumentManager.Infrastructure.Providers.Services.HostedService;
 
 namespace Zedcrest.DocumentManager
 {
@@ -36,6 +39,7 @@ namespace Zedcrest.DocumentManager
             services.AddDbContext<AppDbContext>(options =>
                  options.UseSqlServer(Configuration["DB_CONNECTION_STRING"]));
 
+            services.RegisterQueueServices(Configuration);
 
             services.AddSwaggerGen(c =>
             {
@@ -45,6 +49,7 @@ namespace Zedcrest.DocumentManager
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<DbContext, AppDbContext>();
+            services.AddScoped<IFileOperation, FileOperation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

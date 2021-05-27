@@ -19,6 +19,11 @@ namespace Zedcrest.DocumentManager.Infrastructure.Utilities
                 dest.FilSizeInByte = src.FilSizeInByte;
             });
 
+            CreateMap<DocumentDTO, Document>().AfterMap((src, dest) =>
+            {
+                dest.DocumentId = Guid.NewGuid();
+            });
+
             CreateMap<User, UserDTO>().AfterMap((src, dest) =>
             {
                 dest.FirstName = src.FirstName;
