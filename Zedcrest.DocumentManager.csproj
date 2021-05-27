@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Zedcrest.DocumentManager.UnitTest\**" />
+    <Content Remove="Zedcrest.DocumentManager.UnitTest\**" />
+    <EmbeddedResource Remove="Zedcrest.DocumentManager.UnitTest\**" />
+    <None Remove="Zedcrest.DocumentManager.UnitTest\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Application\Controllers\" />
   </ItemGroup>
 

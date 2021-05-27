@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zedcrest.DocumentManager", "Zedcrest.DocumentManager.csproj", "{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zedcrest.DocumentManager.Test", "..\Zedcrest.DocumentManager.Test\Zedcrest.DocumentManager.Test.csproj", "{0693BBBB-56B1-4198-8C03-42B2A618895E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AB61396-E3A4-43A2-A1BE-D830394C319F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zedcrest.DocumentManager.UnitTest", "Zedcrest.DocumentManager.UnitTest\Zedcrest.DocumentManager.UnitTest.csproj", "{87FD8360-4B5A-4DA1-99DD-C576446F99F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,13 +19,16 @@ Global
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898C3A3F-2CD4-4B79-A10A-A4C91D1AFC2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0693BBBB-56B1-4198-8C03-42B2A618895E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0693BBBB-56B1-4198-8C03-42B2A618895E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0693BBBB-56B1-4198-8C03-42B2A618895E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0693BBBB-56B1-4198-8C03-42B2A618895E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FD8360-4B5A-4DA1-99DD-C576446F99F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FD8360-4B5A-4DA1-99DD-C576446F99F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FD8360-4B5A-4DA1-99DD-C576446F99F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FD8360-4B5A-4DA1-99DD-C576446F99F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87FD8360-4B5A-4DA1-99DD-C576446F99F2} = {2AB61396-E3A4-43A2-A1BE-D830394C319F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E341118-C7AD-4237-A896-4FD5194DF696}
