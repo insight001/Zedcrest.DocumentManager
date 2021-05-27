@@ -12,6 +12,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
 {
     public class SendGridOperation : IEmailOperation
     {
+        public string CurrentName => nameof(SendGridOperation);
         public void SendEmailWithAttachments(string receiverEmail, string name, List<IFormFile> attachments)
         {
            
