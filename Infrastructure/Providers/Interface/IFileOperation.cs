@@ -11,7 +11,5 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Interface
     public interface IFileOperation
     {
         Task<List<DocumentDTO>> UploadFiles(List<IFormFile> files, IConfiguration configuration);
-
-        bool ValidateSize(List<IFormFile> files);
     }
 }
