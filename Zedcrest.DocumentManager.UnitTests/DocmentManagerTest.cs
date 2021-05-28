@@ -61,7 +61,7 @@ namespace Zedcrest.DocumentManager.Test
             writer.Flush();
             ms.Position = 0;
             var fileName = physicalFile.Name;
-            //Setup mock file using info from physical file
+
             fileMock.Setup(_ => _.FileName).Returns(fileName);
             fileMock.Setup(_ => _.Length).Returns(physicalFile.Length);
             fileMock.Setup(_ => _.OpenReadStream()).Returns(ms);
@@ -73,8 +73,7 @@ namespace Zedcrest.DocumentManager.Test
             List<User> users = new List<User>();
 
             var mockUsers = users.AsQueryable().BuildMockDbSet();
-            // var mockCustomerCards = customerCards.AsQueryable().BuildMockDbSet();
-            //var mockCardTokenizationLogs = tokenizationLogs.AsQueryable().BuildMockDbSet();
+          
 
             _context.Setup(c => c.Users).Returns(mockUsers.Object);
 

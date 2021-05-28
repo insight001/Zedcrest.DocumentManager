@@ -56,7 +56,7 @@ namespace Zedcrest.DocumentManager.Application.Features.Documents.Commands
             _context.Users.Add(user);
 
 
-            bool validator = Validator(request.Files);
+            Validator(request.Files);
          
 
             var response = await _fileOperation.UploadFiles(request.Files, _configuration);

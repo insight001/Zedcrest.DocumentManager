@@ -45,6 +45,7 @@ namespace Zedcrest.DocumentManager
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                c.IncludeXmlComments(Path.ChangeExtension(Assembly.GetEntryAssembly().Location, "xml"));
             });
 
             services.AddAutoMapper(typeof(Startup));

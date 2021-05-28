@@ -4,7 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>7209649f-36d8-485f-9faa-8a6ffcd0c1cb</UserSecretsId>
   </PropertyGroup>
-
+<PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
 <ItemGroup>
      <Content Include="Zedcrest.DocumentManager.UnitTest\**"> <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	 </Content> 
@@ -16,10 +19,6 @@
   <EmbeddedResource Remove="Zedcrest.DocumentManager.UnitTests\**" />
   <None Remove="Zedcrest.DocumentManager.UnitTests\**" />
 </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\Controllers\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />

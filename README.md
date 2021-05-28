@@ -24,3 +24,7 @@ Set all configuration variables:
 |AZURE_CONTAINER_NAME |The file storage container name
 |SENDGRID_KEY | The Api key for the email provider
 
+## Running the test.
+
+1. Add 2 documents  ``` a.pdf and b.jpeg ```  
+2. ``` a.pdf ``` is greater than 2MB and ``` b.jpeg ``` is smaller than or equal to 2MB
