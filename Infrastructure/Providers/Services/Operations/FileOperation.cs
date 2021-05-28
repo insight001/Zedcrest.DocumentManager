@@ -18,7 +18,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
         public async Task<List<DocumentDTO>> UploadFiles(List<IFormFile> files, IConfiguration _configuration)
         {
 
-            ValidateSize(files);
+           
 
             List<DocumentDTO> documents = new List<DocumentDTO>();
 
@@ -50,22 +50,6 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
         }
 
 
-        public bool ValidateSize(List<IFormFile> files)
-        {
-            var extensions = new List<string>() { ".pdf", ".xls", ".xlsx", ".doc", ".docx", ".csv", ".png", ".jpg", ".jpeg", ".gif", ".txt" };
-            
-            foreach(var file in files)
-            {
-                if (!extensions.Contains(Path.GetExtension(file.FileName).ToLower()))
-                    throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} extension not recognized");
-
-                if (file.Length > 2000000)
-                    throw new RestException(System.Net.HttpStatusCode.BadRequest, $"{file.FileName} is greater than 2MB");
-            }
-
-            return true;
-
-        }
 
     }
 }

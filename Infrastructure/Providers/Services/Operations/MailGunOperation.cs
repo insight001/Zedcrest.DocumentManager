@@ -9,7 +9,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services.Operations
 {
     public class MailGunOperation : IEmailOperation
     {
-        public string CurrentName => throw new NotImplementedException();
+        public string CurrentName => nameof(MailGunOperation);
 
         public void SendEmailWithAttachments(string receiverEmail, string name, List<IFormFile> attacments)
         {
