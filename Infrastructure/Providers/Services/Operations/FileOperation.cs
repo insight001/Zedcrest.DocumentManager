@@ -18,10 +18,7 @@ namespace Zedcrest.DocumentManager.Infrastructure.Providers.Services
         public async Task<List<DocumentDTO>> UploadFiles(List<IFormFile> files, IConfiguration _configuration)
         {
 
-           
-
-            List<DocumentDTO> documents = new List<DocumentDTO>();
-
+                    
             var bag = new ConcurrentBag<DocumentDTO>();
 
            var tasks = files.Select(async file =>
